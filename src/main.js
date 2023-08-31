@@ -97,24 +97,37 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
+//given global variables
+var savedPosters = [];
+var currentPoster;
+
+
+
 // query selector variables go here 👇
-var posterCover = document.querySelector('.poster-img');
+var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var showRandomButton = document.querySelector('.show-random');
 var randomImages = document.querySelector('.show-random');
 var randomTitles = document.querySelector('.show-random');
 var randomQuotes = document.querySelector('.show-random');
+var makePosterButton = document.querySelector(".show-form")
+var mainPoster = document.querySelector(".main-poster")
+var makePosterView = document.querySelector(".poster-form")
+var mySavedPosters = document.querySelector(".saved-posters")
+var showSavedPostersButton = document.querySelector(".show-saved")
 
+//These are QS that we will need to use later on when we are ready to make the buttons function//
+// var neverMindButton = document.querySelector('.show-main')
+// var backToMainButton = document.querySelector('.back-to-main')
+// var showMyPosterButton = document.querySelector('.make-poster')
 
-
-
-var savedPosters = [];
-var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', getRandomPoster);
-showRandomButton.addEventListener('click',getRandomPoster)
+showRandomButton.addEventListener('click', getRandomPoster)
+makePosterButton.addEventListener("click", makePosterForm)
+showSavedPostersButton.addEventListener("click", showSavedButton)
 
 
 
@@ -145,7 +158,27 @@ function getRandomPoster() {
 }
 
 function displayPoster() {
-  posterCover.src = currentPoster.imageURL
+  posterImg.src = currentPoster.imageURL
   posterTitle.innerText = currentPoster.title
   posterQuote.innerText = currentPoster.quote
+}
+
+function makePosterForm() {
+  mainPoster.classList.add("hidden")
+  makePosterButton.classList.remove("hidden")
+  makePosterView.classList.remove("hidden")
+}
+function showSavedButton() {
+  mySavedPosters.classList.remove("hidden")
+  mainPoster.classList.add("hidden") 
+  grid.innerHTML = ""
+  for (var i = 0; i < savedPosters.length; i++) {
+    grid.innerHTML += `
+      <article class="mini-poster"><id=${savedPosters[i].id}>
+        <img src=${savedPosters[i].imageURL}>
+        <h2>${savedPosters[i].title}</h2>
+        <h4>${savedPosters[i].quote}</h4>
+      </article>
+    `
+  }
 }
