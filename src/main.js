@@ -1,5 +1,3 @@
-// query selector variables go here 👇
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -98,10 +96,19 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+// query selector variables go here 👇
+var posterCover = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+
 var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener('load', getRandomPoster);
+
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -114,5 +121,19 @@ function createPoster(imageURL, title, quote) {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
+    quote: quote
+  }
+}
+function getRandomPoster() {
+  var images = images[getRandomIndex(images)]
+  var titles = titles[getRandomIndex(titles)]
+  var quotes = quotes[getRandomIndex(quotes)]
+  currentPoster = createPoster(images, titles, quotes)
+  displayPoster()
+}
+
+function displayPoster() {
+  posterCover.src = currentPoster.imageURL
+  posterTitle.innerText = currentPoster.title
+  posterQuote.innerText = currentPoster.quote
 }
