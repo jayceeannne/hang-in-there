@@ -17,7 +17,7 @@ var images = [
   "./assets/runner.jpg",
   "./assets/squirrel.jpg",
   "./assets/tiger.jpg",
-  "./assets/turtle.jpg"
+  "./assets/turtle.jpg",
 ];
 var titles = [
   "determination",
@@ -54,7 +54,7 @@ var titles = [
   "smile",
   "trust",
   "understanding",
-  "wisdom"
+  "wisdom",
 ];
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
@@ -94,42 +94,41 @@ var quotes = [
   "If you have good thoughts they will shine out of your face like sunbeams and you will always look lovely.",
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
-  "A champion is defined not by their wins but by how they can recover when they fall."
+  "A champion is defined not by their wins but by how they can recover when they fall.",
 ];
 
 //given global variables
 var savedPosters = [];
 var currentPoster;
 
-
-
 // query selector variables go here 👇
-var posterImg = document.querySelector('.poster-img');
-var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querySelector('.poster-quote');
-var showRandomButton = document.querySelector('.show-random');
-var randomImages = document.querySelector('.show-random');
-var randomTitles = document.querySelector('.show-random');
-var randomQuotes = document.querySelector('.show-random');
-var makePosterButton = document.querySelector('.show-form');
-var mainPoster = document.querySelector('.main-poster');
-var makePosterView = document.querySelector('.poster-form');
-var mySavedPosters = document.querySelector('.saved-posters');
-var showSavedPostersButton = document.querySelector('.show-saved');
-
-//These are QS that we will need to use later on when we are ready to make the buttons function//
-var neverMindButton = document.querySelector('.show-main');
-var backToMainButton = document.querySelector('.back-to-main');
-// var showMyPosterButton = document.querySelector('.make-poster');
-
+var posterImg = document.querySelector(".poster-img");
+var posterTitle = document.querySelector(".poster-title");
+var posterQuote = document.querySelector(".poster-quote");
+var showRandomButton = document.querySelector(".show-random");
+var randomImages = document.querySelector(".show-random");
+var randomTitles = document.querySelector(".show-random");
+var randomQuotes = document.querySelector(".show-random");
+var makePosterButton = document.querySelector(".show-form");
+var mainPoster = document.querySelector(".main-poster");
+var makePosterView = document.querySelector(".poster-form");
+var mySavedPosters = document.querySelector(".saved-posters");
+var showSavedPostersButton = document.querySelector(".show-saved");
+var customUrl = document.querySelector("#poster-image-url");
+var customTitle = document.querySelector("#poster-title");
+var customQuote = document.querySelector("#poster-quote");
+var neverMindButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
+var showMyPosterButton = document.querySelector(".make-poster");
 
 // event listeners go here 👇
-window.addEventListener('load', getRandomPoster);
-showRandomButton.addEventListener('click', getRandomPoster);
-makePosterButton.addEventListener('click', makePosterForm);
-showSavedPostersButton.addEventListener('click', showSavedButton);
-neverMindButton.addEventListener('click', panicButton);
-backToMainButton.addEventListener('click', savedToMain);
+window.addEventListener("load", getRandomPoster);
+showRandomButton.addEventListener("click", getRandomPoster);
+makePosterButton.addEventListener("click", makePosterForm);
+showSavedPostersButton.addEventListener("click", showSavedButton);
+neverMindButton.addEventListener("click", panicButton);
+backToMainButton.addEventListener("click", savedToMain);
+showMyPosterButton.addEventListener("click", customPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -139,20 +138,17 @@ function getRandomIndex(array) {
 
 function createPoster(imageURL, title, quote) {
   return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote
-  }
+    id: Date.now(),
+    imageURL: imageURL,
+    title: title,
+    quote: quote,
+  };
 }
 
 function getRandomPoster() {
   var randomImages = images[getRandomIndex(images)];
-  console.log(images)
   var randomTitles = titles[getRandomIndex(titles)];
-  console.log(titles)
   var randomQuotes = quotes[getRandomIndex(quotes)];
-  console.log(quotes)
   currentPoster = createPoster(randomImages, randomTitles, randomQuotes);
   displayPoster();
 }
@@ -171,7 +167,7 @@ function makePosterForm() {
 function showSavedButton() {
   mySavedPosters.classList.remove("hidden");
   mainPoster.classList.add("hidden");
-  grid.innerHTML = ""
+  grid.innerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
     grid.innerHTML += `
       <article class="mini-poster"><id=${savedPosters[i].id}>
@@ -179,7 +175,7 @@ function showSavedButton() {
         <h2>${savedPosters[i].title}</h2>
         <h4>${savedPosters[i].quote}</h4>
       </article>
-    `
+    `;
   }
 }
 
@@ -189,6 +185,28 @@ function panicButton() {
 }
 
 function savedToMain() {
-mainPoster.classList.remove("hidden");
-mySavedPosters.classList.remove("hidden");
+  mainPoster.classList.remove("hidden");
+  mySavedPosters.classList.remove("hidden");
+}
+
+function toggleView() {
+  mainPoster.classList.toggle('hidden');
+  mySavedPosters.classList.toggle('hidden');
+  makePosterView.classList.toggle('hidden');
+}
+
+function customPoster(event) {
+  images.push(customUrl.value);
+  titles.push(customTitle.value);
+  quotes.push(customQuote.value);
+  var customPosterObject = {
+    id: Date.now(),
+    imageURL: posterImg.src = customUrl.value,
+    title: posterTitle.innerText = customTitle.value,
+    quote: posterQuote.innerText = customQuote.value,
+  }
+  currentPoster = customPosterObject;
+  event.preventDefault();
+  toggleView();
+  return currentPoster;
 }
