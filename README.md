@@ -1,46 +1,40 @@
-# Hang In There
-
-A boilerplate repo. 
-
-## Set Up
-
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
-
-Project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-1/hang-in-there.html)
-
-To view your project:
-
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
-  
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
-______________________________________________________  
-
 # Hang in There  
 
 ### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+
+We built a inspirational poster generator that allows users to create a poster, either from random generation or from their own input. They can also save, access, and delete their saved posters, and return to the home page from either of the alternate views.
 
 ### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
+
+To get this app running, clone it down from [GitHub](https://github.com/jayceeannne/hang-in-there) under the "<> Code" dropdown. Open it from your terminal or preferred CLI with `git clone <HTTPS or SSH key>`. Move into the directory, open the file in your code editor of choice, and you'll have everything you need! The app can be viewed and interacted with in your browser of choice by using `open index.html` in your terminal.
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
+
+![Screenshot of Show Saved Posters view](https://user-images.githubusercontent.com/139941423/265178371-987e4e95-a855-4306-ba7c-81e8357ca573.png)
 
 ### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+
+This project is from Week 2, Mod 1 of the Turing Front End Engineering program, completed 2.5 days from assignment.
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to their GitHubs.)
+
+This application was created by [Jaycee Rodriguez](https://github.com/jayceeannne/) and [Arden Ranta](https://github.com/tenthwalker/).
 
 ### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
+
+The learning goals of this project were to:
+    1. Write clean, DRY JavaScript, building functionality with SRP functions and manipulating DOM elements.
+    2. Initiate an understanding of the connection between HTML, CSS,and JavaScript.
+    3. Build an understanding of collaborative code writing, particularly through code reviews, teamwork, and Git Workflow best practices.
+
+These were accomplished on MacBook Pros using GitHub, VS Code, Google Chrome, the Mac Terminal, and Slack.
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+
+Wins:
+    1. We managed to get the project done in the timeline we set for ourselves, and did not have to rush last minute.
+    2. We prioritized taking care of ourselves during production, taking breaks and seeking help as needed.
+
+Challenges:
+    1. Both of us felt frustration around the volume of technical vocabulary introduced during the week of the project, and sometimes struggled to find answers to our questions due to not having the right search keywords.
+    2. Several small bugs in our code required fresh eyes to come in and diagnose, as we were overwhelmed from looking at our broken code for long periods of time.
