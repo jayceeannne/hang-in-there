@@ -189,7 +189,7 @@ function panicButton() {
 
 function savedToMain() {
   mainPoster.classList.remove("hidden");
-  mySavedPosters.classList.remove("hidden");
+  mySavedPosters.classList.add("hidden");
 }
 
 function toggleView() {
