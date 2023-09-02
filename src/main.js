@@ -120,6 +120,9 @@ var customQuote = document.querySelector("#poster-quote");
 var neverMindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 var showMyPosterButton = document.querySelector(".make-poster");
+var saveThisPosterButton = document.querySelector('.save-poster')
+var grid = document.querySelector('.saved-posters-grid');
+
 
 // event listeners go here 👇
 window.addEventListener("load", getRandomPoster);
@@ -129,7 +132,7 @@ showSavedPostersButton.addEventListener("click", showSavedButton);
 neverMindButton.addEventListener("click", panicButton);
 backToMainButton.addEventListener("click", savedToMain);
 showMyPosterButton.addEventListener("click", customPoster);
-
+saveThisPosterButton.addEventListener('click', saveFavoritePoster)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -210,3 +213,15 @@ function customPoster(event) {
   toggleView();
   return currentPoster;
 }
+
+function saveFavoritePoster() {
+  for (var i = 0; i < savedPosters.length; i++){
+    if (currentPoster.id === savedPosters[i].id) {
+      return
+    }
+  } 
+  console.log(savedPosters)
+  savedPosters.push(currentPoster)
+  console.log(currentPoster)
+}
+
