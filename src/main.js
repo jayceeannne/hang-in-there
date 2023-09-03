@@ -132,7 +132,11 @@ showSavedPostersButton.addEventListener("click", showSavedButton);
 neverMindButton.addEventListener("click", panicButton);
 backToMainButton.addEventListener("click", savedToMain);
 showMyPosterButton.addEventListener("click", customPoster);
-saveThisPosterButton.addEventListener('click', saveFavoritePoster)
+saveThisPosterButton.addEventListener('click', saveFavoritePoster);
+mySavedPosters.addEventListener("dblclick", function (event) {
+  deletePoster(event);
+});
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -225,3 +229,12 @@ function saveFavoritePoster() {
   console.log(currentPoster)
 }
 
+function deletePoster(event) {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (parseInt(event.target.closest("article").id) === savedPosters[i].id) {
+      savedPosters.splice(i, 1);
+    }
+  }
+
+  saveFavoritePoster();
+}
