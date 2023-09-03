@@ -120,9 +120,8 @@ var customQuote = document.querySelector("#poster-quote");
 var neverMindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 var showMyPosterButton = document.querySelector(".make-poster");
-var saveThisPosterButton = document.querySelector('.save-poster')
-var grid = document.querySelector('.saved-posters-grid');
-
+var saveThisPosterButton = document.querySelector(".save-poster");
+var grid = document.querySelector(".saved-posters-grid");
 
 // event listeners go here 👇
 window.addEventListener("load", getRandomPoster);
@@ -132,7 +131,7 @@ showSavedPostersButton.addEventListener("click", showSavedButton);
 neverMindButton.addEventListener("click", panicButton);
 backToMainButton.addEventListener("click", savedToMain);
 showMyPosterButton.addEventListener("click", customPoster);
-saveThisPosterButton.addEventListener('click', saveFavoritePoster);
+saveThisPosterButton.addEventListener("click", saveFavoritePoster);
 mySavedPosters.addEventListener("dblclick", function (event) {
   deletePoster(event);
 });
@@ -197,9 +196,9 @@ function savedToMain() {
 }
 
 function toggleView() {
-  mainPoster.classList.toggle('hidden');
-  mySavedPosters.classList.toggle('hidden');
-  makePosterView.classList.toggle('hidden');
+  mainPoster.classList.toggle("hidden");
+  mySavedPosters.classList.toggle("hidden");
+  makePosterView.classList.toggle("hidden");
 }
 
 function customPoster(event) {
@@ -208,10 +207,10 @@ function customPoster(event) {
   quotes.push(customQuote.value);
   var customPosterObject = {
     id: Date.now(),
-    imageURL: posterImg.src = customUrl.value,
-    title: posterTitle.innerText = customTitle.value,
-    quote: posterQuote.innerText = customQuote.value,
-  }
+    imageURL: (posterImg.src = customUrl.value),
+    title: (posterTitle.innerText = customTitle.value),
+    quote: (posterQuote.innerText = customQuote.value),
+  };
   currentPoster = customPosterObject;
   event.preventDefault();
   toggleView();
@@ -219,22 +218,21 @@ function customPoster(event) {
 }
 
 function saveFavoritePoster() {
-  for (var i = 0; i < savedPosters.length; i++){
+  for (var i = 0; i < savedPosters.length; i++) {
     if (currentPoster.id === savedPosters[i].id) {
-      return
+      return;
     }
-  } 
-  console.log(savedPosters)
-  savedPosters.push(currentPoster)
-  console.log(currentPoster)
+  }
+  savedPosters.push(currentPoster);
 }
 
 function deletePoster(event) {
+  var posterToDelete = event.target.closest(".mini-poster");
+
   for (var i = 0; i < savedPosters.length; i++) {
-    if (parseInt(event.target.closest("article").id) === savedPosters[i].id) {
+    if (savedPosters[i].id === posterToDelete.id) {
       savedPosters.splice(i, 1);
     }
   }
-
-  saveFavoritePoster();
+  posterToDelete.remove();
 }
