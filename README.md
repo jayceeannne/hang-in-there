@@ -10,7 +10,7 @@ To get this app running, clone it down from [GitHub](https://github.com/jayceean
 
 ### Preview of App:
 
-![Screenshot of Show Saved Posters view](https://user-images.githubusercontent.com/139941423/265178371-987e4e95-a855-4306-ba7c-81e8357ca573.png)
+![Screenshot of Show Saved Posters view](https://files.slack.com/files-tmb/T029P2S9M-F05QRBSDTDH-e86d1852ee/screenshot_2023-09-01_at_9.56.34_pm_720.png)
 
 ### Context:
 
